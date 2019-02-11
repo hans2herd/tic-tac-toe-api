@@ -2,24 +2,6 @@ const {
   json
 } = require('micro')
 
-<<<<<<< Updated upstream
-=======
-// const formatBoard = () => {
-//   switch (typeof board) {
-//     case 'object':
-//     return board.flat();
-//     break;
-//     case 'string':
-//     return board.split();
-//     break;
-//     default:
-//     return 'invalid'
-//     break;
-//     } 
-// }
-
-
->>>>>>> Stashed changes
 const checkValues = (...values) =>
   values.every((value) => values[0] === value)
 
@@ -64,23 +46,6 @@ const hasWon = (board) =>
   checkColumns(board) ||
   checkDiagonals(board)
 
-<<<<<<< Updated upstream
-=======
-const format = (board) =>
-  typeof (board) === 'string' ?
-  board.split(' ') :
-  board.flat()
-
-module.exports = async (req, res) => {
-  let {
-    input
-  } = await json(req)
-}  
-
-const formatted = format(input)
-
-// checkValues('X', '0', 'X')
->>>>>>> Stashed changes
 
 const format = (board) =>
   typeof (board) === 'string' ?
