@@ -5,7 +5,26 @@ const {
 const checkValues = (...values) =>
   values.every((value) => values[0] === value)
 
-const checkRows = (board) => {
+
+// function checkRows(board) {
+
+
+//   if (board[0] === board[1] === board[2]) return true
+//   if (board[3] === board[4] === board[5]) return true
+//   if (board[6] === board[7] === board[8]) return true
+
+//   return false
+
+// }
+
+const checkRows = (board = ['', '']) => {
+  // if (board[0] === board[1] === board[2]) return true
+  // if (board[3] === board[4] === board[5]) return true
+  // if (board[6] === board[7] === board[8]) return true
+
+  // return false
+
+
   return checkValues(board[0], board[1], board[2]) ||
     checkValues(board[3], board[4], board[5]) ||
     checkValues(board[6], board[7], board[8])
@@ -34,11 +53,13 @@ const format = (board) =>
   board.flat()
 
 module.exports = async (req, res) => {
-  let {
+  const {
     input
   } = await json(req)
 
+  console.log(input)
   const formatted = format(input)
+  console.log(formatted)
 
   return {
     won: hasWon(formatted)
