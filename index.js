@@ -2,7 +2,6 @@ const {
   json
 } = require('micro')
 
-
 const checkValues = (...values) =>
   values.every((value) => values[0] === value)
 
@@ -23,21 +22,25 @@ const checkDiagonals = (board) => {
     checkValues(board[2], board[4], board[6])
 }
 
-
 const hasWon = (board) =>
   checkRows(board) ||
   checkColumns(board) ||
   checkDiagonals(board)
 
-// checkValues('X', '0', 'X')
 
+const format = (board) =>
+  typeof (board) === 'string' ?
+  board.split(' ') :
+  board.flat()
 
 module.exports = async (req, res) => {
-  const body = await json(req)
+  let {
+    input
+  } = await json(req)
+
+  const formatted = format(input)
+
   return {
-    won: hasWon(body.input)
+    won: hasWon(formatted)
   }
-  // body.input = []
-  // body.input = [[]]
-  // body.input = 'input'
 }
